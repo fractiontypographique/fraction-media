@@ -17,3 +17,10 @@ staticfiles/
 .DS_Store
 *.log
 .env
+
+# CMS PHP
+fraction-php/data/*.sqlite
+fraction-php/data/*.sqlite-*
+fraction-php/uploads/*
+!fraction-php/uploads/.gitkeep
+!fraction-php/uploads/demo-*.svg

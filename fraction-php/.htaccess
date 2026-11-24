@@ -1,0 +1,15 @@
+# Fraction Média (CMS PHP) — hébergeur mutualisé Apache
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Bloquer l'accès web au code applicatif et aux données
+    RewriteRule ^(app|data)/ - [F,L]
+
+    # Servir directement les fichiers existants (uploads, assets, index.php…)
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Tout le reste passe par le routeur
+    RewriteRule ^ index.php [QSA,L]
+</IfModule>
