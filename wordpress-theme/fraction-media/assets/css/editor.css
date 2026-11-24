@@ -1,0 +1,7 @@
+/* Styles de l'éditeur — Fraction Média. */
+body#tinymce {
+	font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+	font-size: 1.05rem;
+	line-height: 1.75;
+	color: #1c1c1e;
+}

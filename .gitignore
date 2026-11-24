@@ -18,9 +18,9 @@ staticfiles/
 *.log
 .env
 
-# CMS PHP
-fraction-php/data/*.sqlite
-fraction-php/data/*.sqlite-*
-fraction-php/uploads/*
-!fraction-php/uploads/.gitkeep
-!fraction-php/uploads/demo-*.svg
+# CMS PHP (legacy)
+legacy-php/data/*.sqlite
+legacy-php/data/*.sqlite-*
+legacy-php/uploads/*
+!legacy-php/uploads/.gitkeep
+!legacy-php/uploads/demo-*.svg
