@@ -1,0 +1,12 @@
+<p class="kicker">{{ article.rubrique.nom }}</p>
+<article class="carte">
+    {% if article.image_couverture %}
+        <a href="{{ article.get_absolute_url }}"><img class="carte-img" src="{{ article.image_couverture.url }}" alt="{{ article.legende_couverture|default:article.titre }}"></a>
+    {% endif %}
+    <h3 class="carte-titre"><a href="{{ article.get_absolute_url }}">{{ article.titre }}</a></h3>
+    {% if article.chapo %}<p class="carte-chapo">{{ article.chapo }}</p>{% endif %}
+    <p class="byline">
+        {% if article.auteurs.all %}Par {{ article.auteurs.all|join:", " }} · {% endif %}
+        {{ article.date_publication|date:"d F Y" }} · {{ article.temps_lecture }} min
+    </p>
+</article>

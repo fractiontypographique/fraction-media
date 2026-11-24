@@ -1,0 +1,11 @@
+{% extends "core/base.html" %}
+
+{% block title %}Article en préparation — {{ site_nom }}{% endblock %}
+
+{% block content %}
+<div class="container brouillon">
+    <h1>Cet article n'est pas encore publié</h1>
+    <p>« {{ article.titre }} » est actuellement en cours de rédaction. Il sera visible ici dès sa mise en ligne.</p>
+    <p><a class="bouton" href="/">← Retour à l'accueil</a></p>
+</div>
+{% endblock %}

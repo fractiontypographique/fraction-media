@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block title %}Art — {{ site_nom }}{% endblock %}
+{% block meta_description %}Portfolio d'œuvres : peinture, photographie, arts plastiques.{% endblock %}
+
+{% block content %}
+<header class="container rubrique-head">
+    <h1>Art</h1>
+    <p class="rubrique-desc">Le portfolio : œuvres d'artistes invité·e·s, peinture, image et arts plastiques.</p>
+</header>
+
+<section class="container">
+    <div class="grid-oeuvres grille-portrait">
+        {% for oeuvre in oeuvres %}
+            <figure class="carte-oeuvre oeuvre-detail">
+                {% if oeuvre.image %}
+                    <img src="{{ oeuvre.image.url }}" alt="{{ oeuvre.titre }}, {{ oeuvre.artiste }}" loading="lazy">
+                {% else %}
+                    <div class="media-fallback"><span>{{ oeuvre.titre|slice:":1" }}</span></div>
+                {% endif %}
+                <figcaption>
+                    <strong>{{ oeuvre.titre }}</strong>
+                    <span>{{ oeuvre.artiste }}{% if oeuvre.annee %}, {{ oeuvre.annee }}{% endif %}{% if oeuvre.technique %} — {{ oeuvre.technique }}{% endif %}</span>
+                    {% if oeuvre.description %}<p>{{ oeuvre.description }}</p>{% endif %}
+                </figcaption>
+            </figure>
+        {% empty %}
+            <p class="empty-note">Aucune œuvre publiée pour l'instant. Ajoutez-en depuis le <a href="/admin/">back-office</a>.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

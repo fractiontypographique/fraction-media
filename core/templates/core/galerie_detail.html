@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ galerie.titre }} — Photographie — {{ site_nom }}{% endblock %}
+{% block meta_description %}{{ galerie.description }}{% endblock %}
+
+{% block content %}
+<header class="container rubrique-head">
+    <a class="kicker" href="{% url 'core:galeries' %}">← Toutes les galeries</a>
+    <h1>{{ galerie.titre }}</h1>
+    {% if galerie.description %}<p class="rubrique-desc">{{ galerie.description }}</p>{% endif %}
+    <p class="byline">
+        {% if galerie.photographe %}Photographies de {{ galerie.photographe.nom_complet }} · {% endif %}
+        {{ galerie.date_publication|date:"d F Y" }}
+    </p>
+</header>
+
+<section class="container galerie-grille">
+    {% for photo in galerie.photos.all %}
+        <figure class="photo-item">
+            {% if photo.image %}
+            <img src="{{ photo.image.url }}" alt="{{ photo.legende|default:galerie.titre }}" loading="lazy">
+            {% endif %}
+            {% if photo.legende or photo.credit %}
+                <figcaption>{{ photo.legende }}{% if photo.credit %} — {{ photo.credit }}{% endif %}</figcaption>
+            {% endif %}
+        </figure>
+    {% empty %}
+        <p class="empty-note">Cette galerie ne contient pas encore de photographies.</p>
+    {% endfor %}
+</section>
+{% endblock %}

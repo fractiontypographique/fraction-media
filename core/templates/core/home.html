@@ -1,0 +1,84 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+{% if a_la_une %}
+<article class="une">
+    <div class="container une-inner">
+        <div class="une-text">
+            <p class="kicker kicker-une">À la une · {{ a_la_une.rubrique.nom }}</p>
+            <h1 class="une-titre"><a href="{{ a_la_une.get_absolute_url }}">{{ a_la_une.titre }}</a></h1>
+            {% if a_la_une.chapo %}<p class="une-chapo">{{ a_la_une.chapo }}</p>{% endif %}
+            <p class="byline">
+                {% if a_la_une.auteurs.all %}Par {{ a_la_une.auteurs.all|join:", " }} · {% endif %}
+                {{ a_la_une.date_publication|date:"d F Y" }} · {{ a_la_une.temps_lecture }} min de lecture
+            </p>
+        </div>
+        <a class="une-media" href="{{ a_la_une.get_absolute_url }}">
+            {% if a_la_une.image_couverture %}
+                <img src="{{ a_la_une.image_couverture.url }}" alt="{{ a_la_une.legende_couverture|default:a_la_une.titre }}">
+            {% else %}
+                <div class="media-fallback"><span>{{ a_la_une.rubrique.nom|slice:":1" }}</span></div>
+            {% endif %}
+        </a>
+    </div>
+</article>
+{% endif %}
+
+<section class="container section">
+    <h2 class="section-titre">Derniers articles</h2>
+    <div class="grid-articles">
+        {% for article in articles %}
+            {% include "core/includes/carte_article.html" %}
+        {% empty %}
+            <p class="empty-note">Aucun article publié pour l'instant. Les articles rédigés dans le <a href="/admin/">back-office</a> apparaîtront ici.</p>
+        {% endfor %}
+    </div>
+</section>
+
+<section class="section section-photos">
+    <div class="container">
+        <h2 class="section-titre">Photographie</h2>
+        <div class="grid-photos">
+            {% for galerie in galeries %}
+                <a class="carte-photo" href="{{ galerie.get_absolute_url }}">
+                    {% if galerie.couverture %}
+                        <img src="{{ galerie.couverture.image.url }}" alt="{{ galerie.couverture.legende|default:galerie.titre }}">
+                    {% else %}
+                        <div class="media-fallback media-fallback-bleu"><span>◐</span></div>
+                    {% endif %}
+                    <div class="carte-photo-meta">
+                        <h3>{{ galerie.titre }}</h3>
+                        <p>{{ galerie.photos.count }} photographie{{ galerie.photos.count|pluralize }}{% if galerie.photographe %} · {{ galerie.photographe.nom_complet }}{% endif %}</p>
+                    </div>
+                </a>
+            {% empty %}
+                <p class="empty-note empty-note-clair">Aucune galerie publiée pour l'instant.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<section class="container section">
+    <h2 class="section-titre">Art</h2>
+    <div class="grid-oeuvres">
+        {% for oeuvre in oeuvres %}
+            <figure class="carte-oeuvre">
+                {% if oeuvre.image %}
+                    <img src="{{ oeuvre.image.url }}" alt="{{ oeuvre.titre }}, {{ oeuvre.artiste }}">
+                {% else %}
+                    <div class="media-fallback"><span>{{ oeuvre.titre|slice:":1" }}</span></div>
+                {% endif %}
+                <figcaption>
+                    <strong>{{ oeuvre.titre }}</strong>
+                    <span>{{ oeuvre.artiste }}{% if oeuvre.annee %}, {{ oeuvre.annee }}{% endif %}</span>
+                </figcaption>
+            </figure>
+        {% empty %}
+            <p class="empty-note">Aucune œuvre publiée pour l'instant.</p>
+        {% endfor %}
+    </div>
+    <div class="section-lien">
+        <a class="bouton" href="{% url 'core:oeuvres' %}">Voir le portfolio →</a>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "core/base.html" %}
+
+{% block title %}Photographie — {{ site_nom }}{% endblock %}
+{% block meta_description %}Galeries photographiques de {{ site_nom }}.{% endblock %}
+
+{% block content %}
+<header class="container rubrique-head">
+    <h1>Photographie</h1>
+    <p class="rubrique-desc">Séries photographiques publiées par la rédaction.</p>
+</header>
+
+<section class="container">
+    <div class="grid-photos grille-galeries">
+        {% for galerie in galeries %}
+            <a class="carte-photo" href="{{ galerie.get_absolute_url }}">
+                {% if galerie.couverture %}
+                    <img src="{{ galerie.couverture.image.url }}" alt="{{ galerie.couverture.legende|default:galerie.titre }}">
+                {% else %}
+                    <div class="media-fallback media-fallback-bleu"><span>◐</span></div>
+                {% endif %}
+                <div class="carte-photo-meta">
+                    <h3>{{ galerie.titre }}</h3>
+                    <p>{{ galerie.photos.count }} photographie{{ galerie.photos.count|pluralize }}{% if galerie.photographe %} · {{ galerie.photographe.nom_complet }}{% endif %}</p>
+                </div>
+            </a>
+        {% empty %}
+            <p class="empty-note">Aucune galerie publiée pour l'instant.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

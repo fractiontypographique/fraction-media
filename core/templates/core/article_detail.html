@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+{% load fraction_tags %}
+
+{% block title %}{{ article.titre }} — {{ site_nom }}{% endblock %}
+{% block meta_description %}{{ article.chapo }}{% endblock %}
+
+{% block content %}
+<article class="article-page">
+    <header class="container article-head">
+        <a class="kicker" href="{{ article.rubrique.get_absolute_url }}">{{ article.rubrique.nom }}</a>
+        <h1>{{ article.titre }}</h1>
+        {% if article.chapo %}<p class="article-chapo">{{ article.chapo }}</p>{% endif %}
+        <p class="byline">
+            {% with auteurs=article.auteurs.all %}
+                {% if auteurs %}Par {% for a in auteurs %}{% if not forloop.first %}, {% endif %}{{ a.nom_complet }}{% endfor %} · {% endif %}
+            {% endwith %}
+            <time datetime="{{ article.date_publication|date:'c' }}">{{ article.date_publication|date:"d F Y" }}</time> ·
+            {{ article.temps_lecture }} min de lecture
+        </p>
+    </header>
+
+    {% if article.image_couverture %}
+        <figure class="article-couverture">
+            <img src="{{ article.image_couverture.url }}" alt="{{ article.legende_couverture|default:article.titre }}">
+            {% if article.legende_couverture %}<figcaption class="container">{{ article.legende_couverture }}</figcaption>{% endif %}
+        </figure>
+    {% endif %}
+
+    <div class="container article-corps">
+        {{ article.corps|md_to_html }}
+    </div>
+
+    {% if article.tags.all %}
+        <aside class="container article-tags">
+            {% for tag in article.tags.all %}
+                <span class="tag">#{{ tag.nom }}</span>
+            {% endfor %}
+        </aside>
+    {% endif %}
+</article>
+
+{% if articles_lies %}
+<section class="section-lecture container section">
+    <h2 class="section-titre">Dans la même rubrique</h2>
+    <div class="grid-articles">
+        {% for article in articles_lies %}
+            {% include "core/includes/carte_article.html" %}
+        {% endfor %}
+    </div>
+</section>
+{% endif %}
+{% endblock %}

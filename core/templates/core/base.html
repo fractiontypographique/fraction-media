@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ site_nom }} — Art, photographie et analyse{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}{{ site_nom }} : un média entre art, photographie et articles universitaires — politique, sociologie, histoire.{% endblock %}">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23e5383b'/><text x='50' y='72' font-size='64' font-family='Georgia' text-anchor='middle' fill='white'>F</text></svg>">
+</head>
+<body>
+<header class="masthead">
+    <div class="container masthead-inner">
+        <a class="logo" href="{% url 'core:home' %}">FRACTION<span class="logo-accent">·</span>MÉDIA</a>
+        <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+        <nav class="nav" id="site-nav">
+            {% for rubrique in rubriques_nav %}
+                <a href="{{ rubrique.get_absolute_url }}">{{ rubrique.nom }}</a>
+            {% endfor %}
+            <a href="{% url 'core:galeries' %}">Photographie</a>
+            <a href="{% url 'core:oeuvres' %}">Art</a>
+            <a href="{% url 'core:apropos' %}">À propos</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div>
+            <p class="footer-logo">FRACTION·MÉDIA</p>
+            <p class="footer-tagline">Un média entre art, photographie et analyse universitaire.</p>
+        </div>
+        <nav class="footer-nav">
+            {% for rubrique in rubriques_nav %}
+                <a href="{{ rubrique.get_absolute_url }}">{{ rubrique.nom }}</a>
+            {% endfor %}
+            <a href="{% url 'core:galeries' %}">Photographie</a>
+            <a href="{% url 'core:oeuvres' %}">Art</a>
+            <a href="{% url 'core:apropos' %}">À propos</a>
+        </nav>
+        <p class="footer-contribute">
+            Rédaction : <a href="/admin/">accès rédaction</a>
+        </p>
+    </div>
+    <div class="container footer-legal">
+        <p>© {% now "Y" %} {{ site_nom }} — tous droits réservés.</p>
+    </div>
+</footer>
+
+<script src="{% static 'js/nav.js' %}" defer></script>
+</body>
+</html>

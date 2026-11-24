@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ rubrique.nom }} — {{ site_nom }}{% endblock %}
+{% block meta_description %}{{ rubrique.description|default:rubrique.nom }}{% endblock %}
+
+{% block content %}
+<header class="container rubrique-head">
+    <h1>{{ rubrique.nom }}</h1>
+    {% if rubrique.description %}<p class="rubrique-desc">{{ rubrique.description }}</p>{% endif %}
+</header>
+
+<section class="container">
+    <div class="grid-articles">
+        {% for article in articles %}
+            {% include "core/includes/carte_article.html" %}
+        {% empty %}
+            <p class="empty-note">Aucun article publié dans cette rubrique pour l'instant.</p>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
