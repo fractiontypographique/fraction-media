@@ -34,6 +34,17 @@
     }
   },
   "styles": {
+    "blocks": {
+      "core/site-title": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontSize": "clamp(1.6rem, 3vw, 2.2rem)",
+          "fontWeight": "400",
+          "textTransform": "uppercase",
+          "lineHeight": "1"
+        }
+      }
+    },
     "color": {
       "background": "var(--wp--preset--color--fraction-blanc)",
       "text": "var(--wp--preset--color--fraction-noir)"
