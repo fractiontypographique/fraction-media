@@ -20,7 +20,7 @@ Aucun plugin requis, aucune dépendance : 100 % WordPress standard.
 | Œuvres d'art | Type de contenu **« Œuvres d'art »** avec notice : artiste, année, technique + description dans le contenu |
 | À la une | Rendez un article **épinglé** (visible dans « Réglages → Visibilité » de l'éditeur) : il devient la une de la page d'accueil |
 | Menus | **Apparence → Menus** : « Menu principal » et « Menu pied de page » |
-| Logo | **Apparence → Personnaliser → Identité du site** (logo optionnel, sinon titre du site) |
+| Logo / marque | **Apparence → Personnaliser → Identité du site** (logo optionnel, sinon titre du site + SVG rouge de la marque) ; favicon : il suffit alors de définir l'icône du site (16×16..512×512), sinon la marque sert de favicon de secours. |
 | Temps de lecture | Calculé automatiquement (200 mots/min) |
 
 ## Installation (hébergement FTP, sans SSH)

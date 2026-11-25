@@ -21,7 +21,7 @@ while ( have_posts() ) :
 		<?php if ( has_post_thumbnail() ) : ?>
 			<?php the_post_thumbnail( 'full' ); ?>
 		<?php else : ?>
-			<div class="media-fallback" aria-hidden="true"><span>F</span></div>
+			<?php fraction_media_fallback(); ?>
 		<?php endif; ?>
 
 		<div>

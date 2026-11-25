@@ -80,7 +80,7 @@ $oeuvres = get_posts(
 				if ( has_post_thumbnail( $une ) ) {
 					echo get_the_post_thumbnail( $une, 'fraction-une' );
 				} else {
-					echo '<div class="media-fallback" aria-hidden="true"><span>F</span></div>';
+					fraction_media_fallback();
 				}
 				?>
 			</a>
@@ -123,7 +123,7 @@ $oeuvres = get_posts(
 					if ( has_post_thumbnail() ) {
 						echo get_the_post_thumbnail( get_the_ID(), 'fraction-carre' );
 					} else {
-						echo '<div class="media-fallback" aria-hidden="true"><span>F</span></div>';
+						fraction_media_fallback();
 					}
 					?>
 					<div class="carte-photo-meta">
@@ -154,7 +154,7 @@ $oeuvres = get_posts(
 						if ( has_post_thumbnail() ) {
 							echo get_the_post_thumbnail( get_the_ID(), 'fraction-portrait' );
 						} else {
-							echo '<div class="media-fallback" aria-hidden="true"><span>F</span></div>';
+							fraction_media_fallback();
 						}
 						?>
 					</a>

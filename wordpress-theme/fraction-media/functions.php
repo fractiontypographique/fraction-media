@@ -286,7 +286,37 @@ function fraction_media_date_fr( $post = null ) {
 }
 
 /**
- * Remplace la vignette manquante par un bloc sombre « F ».
+ * URL de la marque rouge (SVG fourni).
+ *
+ * @return string
+ */
+function fraction_media_marque_url() {
+	return get_template_directory_uri() . '/assets/img/marque-fraction.svg';
+}
+
+/**
+ * Bloc de repli pour les contenus sans image mise en avant.
+ */
+function fraction_media_fallback() {
+	printf(
+		'<div class="media-fallback" aria-hidden="true"><img class="media-marque" src="%1$s" alt="" /></div>',
+		esc_url( fraction_media_marque_url() )
+	);
+}
+
+/**
+ * Favicon de secours : la marque, si aucune icône de site n'est définie.
+ */
+function fraction_media_icone() {
+	if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
+		return;
+	}
+	printf( '<link rel="icon" href="%s" />', esc_url( fraction_media_marque_url() ) );
+}
+add_action( 'wp_head', 'fraction_media_icone' );
+
+/**
+ * Remplace la vignette manquante par un bloc sombre avec la marque.
  *
  * @param int|null $post_id Identifiant du contenu (facultatif).
  */
@@ -295,9 +325,7 @@ function fraction_media_image( $post_id = null ) {
 		echo get_the_post_thumbnail( $post_id, 'fraction-carte', array( 'class' => 'carte-img' ) );
 		return;
 	}
-	?>
-	<div class="media-fallback" aria-hidden="true"><span>F</span></div>
-	<?php
+	fraction_media_fallback();
 }
 
 /**

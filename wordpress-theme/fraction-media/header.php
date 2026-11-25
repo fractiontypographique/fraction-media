@@ -25,7 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<?php if ( has_custom_logo() ) : ?>
 			<?php the_custom_logo(); ?>
 		<?php else : ?>
-			<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( get_bloginfo( 'name' ) ); ?> <span class="logo-accent">·</span></a>
+			<a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php echo esc_html( get_bloginfo( 'name' ) ); ?> <img class="logo-marque" src="<?php echo esc_url( fraction_media_marque_url() ); ?>" alt="" /></a>
 		<?php endif; ?>
 
 		<button class="nav-toggle" aria-expanded="false" aria-controls="menu-principal">☰</button>

@@ -208,10 +208,18 @@ a:hover { color: var(--rouge); }
     background: linear-gradient(135deg, #2b2d42, #1b1b1e);
 }
 
-.media-fallback span {
-    font-family: var(--serif);
-    font-size: 6rem;
-    color: rgba(255, 255, 255, 0.25);
+.logo-marque {
+    height: 1.15em;
+    width: auto;
+    display: inline-block;
+    vertical-align: -0.14em;
+    margin-left: 0.3em;
+}
+
+.media-fallback img.media-marque {
+    width: 20%;
+    max-width: 140px;
+    margin: 0 auto;
 }
 
 .byline {
