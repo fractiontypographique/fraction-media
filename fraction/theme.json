@@ -1,0 +1,64 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "layout": { "contentSize": "760px", "wideSize": "1280px" },
+    "useRootPaddingAwareAlignments": true,
+    "color": {
+      "defaultPalette": false,
+      "defaultGradients": false,
+      "palette": [
+        { "slug": "fraction-blanc", "color": "#F4F1EA", "name": "Papier journal" },
+        { "slug": "fraction-noir", "color": "#121212", "name": "Noir encre" },
+        { "slug": "fraction-rouge", "color": "#D02C25", "name": "Rouge Fraction" },
+        { "slug": "fraction-octobre", "color": "#A0221C", "name": "Rouge Octobre" },
+        { "slug": "fraction-steel", "color": "#2E3440", "name": "Gris acier" },
+        { "slug": "fraction-oie", "color": "#E4E0D5", "name": "Beige CNAP" }
+      ]
+    },
+    "typography": {
+      "defaultFontSizes": false,
+      "fontFamilies": [
+        { "fontFamily": "\"Archivo Black\", sans-serif", "slug": "display", "name": "Display (manifeste)" },
+        { "fontFamily": "\"Oswald\", sans-serif", "slug": "poste", "name": "Oswald (constructiviste)" },
+        { "fontFamily": "\"Playfair Display\", serif", "slug": "editorial", "name": "Editorial (art & culture)" },
+        { "fontFamily": "\"Archivo\", system-ui, sans-serif", "slug": "systeme", "name": "Systeme (politique & societe)" }
+      ],
+      "fontSizes": [
+        { "slug": "petit", "size": "0.82rem", "name": "Petit" },
+        { "slug": "courant", "size": "1.05rem", "name": "Courant" },
+        { "slug": "rubrique", "size": "1.45rem", "name": "Rubrique" },
+        { "slug": "manchette", "size": "clamp(2.4rem, 6vw, 4.6rem)", "name": "Manchette" }
+      ]
+    }
+  },
+  "styles": {
+    "blocks": {
+      "core/site-title": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontSize": "clamp(1.6rem, 3vw, 2.2rem)",
+          "fontWeight": "400",
+          "textTransform": "uppercase",
+          "lineHeight": "1"
+        }
+      }
+    },
+    "color": {
+      "background": "var(--wp--preset--color--fraction-blanc)",
+      "text": "var(--wp--preset--color--fraction-noir)"
+    },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--systeme)",
+      "fontSize": "var(--wp--preset--font-size--courant)",
+      "lineHeight": "1.65"
+    },
+    "elements": {
+      "link": { "color": { "text": "var(--wp--preset--color--fraction-noir)" } },
+      "h1": { "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontSize": "var(--wp--preset--font-size--manchette)", "lineHeight": "1.02", "textTransform": "uppercase" } },
+      "h2": { "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "textTransform": "uppercase", "lineHeight": "1.1" } },
+      "h3": { "typography": { "fontFamily": "var(--wp--preset--font-family--editorial)", "fontWeight": "700" } }
+    }
+  }
+}

@@ -1,0 +1,38 @@
+/*
+Theme Name: Fraction
+Theme URI: https://fraction.media
+Author: SEFM - Societe des Editions Fraction Media
+Author URI: https://fraction.media
+Description: Theme WordPress en blocs (FSE) pour Fraction.media, revue d'art, culture, politique et sociologie. Heritage graphique Street Press / Mediapart / CNAP, avec une touche de brutalisme constructiviste sovietique : diagonales rouges, blocs massifs, typo de manifeste.
+Requires at least: 6.4
+Tested up to: 6.7
+Requires PHP: 8.0
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: fraction
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap');
+
+.fraction-verb { position: relative; overflow: hidden; }
+.fraction-verb::before {
+  content: ""; position: absolute; top: -10%; right: -12%;
+  width: 42vmin; height: 260%;
+  background: var(--wp--preset--color--fraction-rouge);
+  transform: rotate(28deg); z-index: 0; pointer-events: none;
+}
+.fraction-rule { border-top: 14px solid var(--wp--preset--color--fraction-noir) !important; }
+.fraction-post-list .wp-block-post .wp-block-post-title {
+  border-left: 20px solid var(--wp--preset--color--fraction-rouge); padding-left: 0.75rem;
+}
+.fraction-left .wp-block-post-content > p:first-child::first-letter {
+  font-family: var(--wp--preset--font-family--editorial); font-size: 4.2rem;
+  line-height: 0.85; color: var(--wp--preset--color--fraction-rouge);
+  float: left; padding-right: 0.6rem; font-weight: 700;
+}
+.fraction-slogan {
+  background: var(--wp--preset--color--fraction-rouge);
+  color: var(--wp--preset--color--fraction-blanc);
+  text-transform: uppercase; letter-spacing: 0.18em;
+}

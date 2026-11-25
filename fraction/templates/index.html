@@ -1,0 +1,41 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+<!-- wp:group {"className":"fraction-verb","layout":{"type":"constrained"},"style":{"spacing":{"padding":{"top":"4rem","bottom":"4rem","left":"2rem","right":"2rem"}}}} -->
+<div class="wp-block-group fraction-verb" style="padding-top:4rem;padding-right:2rem;padding-bottom:4rem;padding-left:2rem">
+	<!-- wp:heading {"level":1,"style":{"typography":{"textTransform":"uppercase"}}} -->
+	<h1 class="wp-block-heading">Fraction</h1>
+	<!-- /wp:heading -->
+	<!-- wp:paragraph {"style":{"typography":{"fontFamily":"var(--wp--preset--font-family--editorial)","fontSize":"1.6rem","fontStyle":"italic"}}} -->
+	<p>Revue d'art, de culture, de politique et de sociologie. Édité par la SEFM.</p>
+	<!-- /wp:paragraph -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group {"style":{"spacing":{"padding":{"left":"2rem","right":"2rem"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group" style="padding-right:2rem;padding-left:2rem">
+	<!-- wp:heading {"level":2,"style":{"typography":{"textTransform":"uppercase"}}} -->
+	<h2 class="wp-block-heading">Dernières publications</h2>
+	<!-- /wp:heading -->
+	<!-- wp:query {"queryId":0,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"exclude","inherit":false},"className":"fraction-post-list","layout":{"type":"default"}} -->
+	<div class="wp-block-query fraction-post-list">
+		<!-- wp:post-template -->
+			<!-- wp:post-title {"isLink":true,"style":{"typography":{"fontFamily":"var(--wp--preset--font-family--display)","textTransform":"uppercase"}}} /-->
+			<!-- wp:post-terms {"term":"category","style":{"typography":{"fontFamily":"var(--wp--preset--font-family--poste)","textTransform":"uppercase"}},"textColor":"fraction-rouge"} /-->
+			<!-- wp:post-excerpt {"moreText":"Lire la suite →"} /-->
+			<!-- wp:separator {"className":"fraction-rule"} -->
+			<hr class="wp-block-separator has-alpha-channel-opacity fraction-rule"/>
+			<!-- /wp:separator -->
+		<!-- /wp:post-template -->
+		<!-- wp:query-pagination {"paginationArrow":"arrow"} -->
+			<!-- wp:query-pagination-previous /-->
+			<!-- wp:query-pagination-numbers /-->
+			<!-- wp:query-pagination-next /-->
+		<!-- /wp:query-pagination -->
+		<!-- wp:query-no-results -->
+			<!-- wp:paragraph -->
+			<p>Aucune publication. Le numéro arrive.</p>
+			<!-- /wp:paragraph -->
+		<!-- /wp:query-no-results -->
+	</div>
+	<!-- /wp:query -->
+</div>
+<!-- /wp:group -->
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->
